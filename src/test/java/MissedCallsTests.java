@@ -59,7 +59,7 @@ public class MissedCallsTests {
 
     private static Stream<Arguments> source1() {
         return Stream.of(Arguments.of("121-111-38", new Contact("Вася", "Иванов", "111-111-38", Group.FRIENDS)),
-                Arguments.of("111-111-3444", new Contact("Вася", "Иванов", "111-111-3444", Group.FRIENDS)));
+                Arguments.of("222", new Contact("Федор", "Петров", "222", Group.FAMILY)));
 
     }
 
@@ -78,8 +78,8 @@ public class MissedCallsTests {
 
     private static Stream<Arguments> source() {
 
-        return Stream.of(Arguments.of(LocalDateTime.parse("2018-11-03T12:45:30"), new MissedCalls(LocalDateTime.parse("2018-11-03T12:45:30"), "111-111-36")),
-                Arguments.of(LocalDateTime.parse("2018-11-03T12:45:40"), new MissedCalls(LocalDateTime.parse("2018-11-03T12:45:40"), "111-111-37")));
+        return Stream.of(Arguments.of(LocalDateTime.parse("2018-11-10T12:45:30"), new MissedCalls(LocalDateTime.parse("2018-11-10T12:45:30"), "111-111")),
+                Arguments.of(LocalDateTime.parse("2018-11-03T12:45:30"), new MissedCalls(LocalDateTime.parse("2018-11-03T12:45:30"), "222-222")));
 
 
     }
@@ -100,22 +100,22 @@ public class MissedCallsTests {
     @Test
     public void givenMapAndKey_whenKeyFoundInMap_thenCorrect() {
         Map<String, Contact> contacts = new HashMap<>();
-        contacts.put("111-111-38", new Contact("Вася", "Иванов", "111-111-38", Group.FRIENDS));
-        assertThat(contacts, hasKey("111-111-38"));
+        contacts.put("333-333", new Contact("Саша", "Федорова", "333-333", Group.FRIENDS));
+        assertThat(contacts, hasKey("333-333"));
     }
 
     @Test
     public void givenMapAndValue_whenValueFoundInMap_thenCorrect() {
         Map<String, Contact> contacts = new HashMap<>();
-        contacts.put("111-111-38", new Contact("Вася", "Иванов", "111-111-38", Group.FRIENDS));
-        assertThat(contacts, hasValue(new Contact("Вася", "Иванов", "111-111-38", Group.FRIENDS)));
+        contacts.put("444-444", new Contact("Коля", "Николаев", "444-444", Group.WORK));
+        assertThat(contacts, hasValue(new Contact("Коля", "Николаев", "444-444", Group.WORK)));
     }
 
     @Test
     public void givenMapAndEntry_whenEntryFoundInMap_thenCorrect() {
         Map<String, Contact> contacts = new HashMap<>();
-        contacts.put("111-111-38", new Contact("Вася", "Иванов", "111-111-38", Group.FRIENDS));
-        assertThat(contacts, hasEntry("111-111-38", new Contact("Вася", "Иванов", "111-111-38", Group.FRIENDS)));
+        contacts.put("555-555-555", new Contact("Игнат", "Семенов", "555-555-555", Group.FRIENDS));
+        assertThat(contacts, hasEntry("555-555-555", new Contact("Игнат", "Семенов", "555-555-555", Group.FRIENDS)));
 
     }
 }
