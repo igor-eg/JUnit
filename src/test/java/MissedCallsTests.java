@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
 
 public class MissedCallsTests {
 
-    MissedCalls sut = new MissedCalls();
+    MissedCalls sut;
 
 
     private static long suiteStartTime;
@@ -36,6 +36,7 @@ public class MissedCallsTests {
     public void initTest() {
         System.out.println("Starting new nest");
         testStartTime = System.nanoTime();
+        sut = new MissedCalls();
     }
 
     @AfterEach
